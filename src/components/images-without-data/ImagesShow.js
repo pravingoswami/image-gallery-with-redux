@@ -5,6 +5,10 @@ import {
     MDBContainer,
     MDBView
   } from "mdbreact";
+  import Masonry from 'react-masonry-css'
+
+import './modal.css';
+
 
   import "@fortawesome/fontawesome-free/css/all.min.css";
   import "bootstrap-css-only/css/bootstrap.min.css";
@@ -21,26 +25,30 @@ class ImagesShow extends React.Component{
             <div>
 
     
-    <MDBContainer>
-            <MDBRow>
-                {
+
+
+
+          <MDBContainer>
+        <Masonry
+            breakpointCols={3}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {
                     this.props.images.map(image => {
                         return (
-                            <MDBCol lg="4">
-                           
-                              <Link to = {`/images-without-data/${image.id}`} key = {image.id} >
-                              <MDBView waves>
-                                  <img src={image.download_url} className="img-fluid" alt="" key = {image.id} />
-                                  </MDBView>
-                                  
-                                  </Link>
-                            <br></br>
-                          </MDBCol>
+
+                          <div>
+                              <Link to = {`/images-without-data/${image.id}`} >
+                              <img src={image.download_url} className="img-fluid" alt="" />
+                              </Link>
+                             
+                          </div>
                         )
                     })
                 }
-            </MDBRow>
-          </MDBContainer>
+          </Masonry>
+        </MDBContainer>
     
             </div>
         )

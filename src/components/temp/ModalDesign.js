@@ -1,67 +1,75 @@
 import React from 'react'
-import { MDBContainer,MDBCol,MDBView, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBRow } from 'mdbreact';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {
+    MDBRow,
+    MDBCol,
+    MDBContainer,
+    MDBView
+  } from "mdbreact";
+
+  import "@fortawesome/fontawesome-free/css/all.min.css";
+  import "bootstrap-css-only/css/bootstrap.min.css";
+  import "mdbreact/dist/css/mdb.css";
+import { connect } from 'react-redux';
+import Masonry from 'react-masonry-css'
+
+import './modal.css';
+
+
 
 class ModalDesign extends React.Component{
-  
+    render(){
+        return(
+            <div>
 
-constructor(){
-  super()
-  this.state = {
-    modal : false
-  }
-}
-
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
-
-  render(){
-    return(
-      <div>
-
-
-
-      <MDBContainer>
-        {/* BUTTON */}
-        <MDBBtn color="info" onClick={this.toggle}>Click</MDBBtn>
-        {/* MODAL */}
-        <MDBModal isOpen={this.state.modal} toggle={this.toggle}   size="fluid"  frame  position="top">
-          <MDBModalHeader toggle={this.toggle}>Image Description</MDBModalHeader>
-          <MDBModalBody>
-          <MDBRow>
-          <MDBCol >
-          <MDBView waves>
-                  <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).jpg" className="img-fluid" alt="" />
-                        </MDBView>
-          </MDBCol>
-          <MDBCol size="4">
-          <form>
-          <p className="h4 text-center mb-4">Enter Image Details</p>
-                <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="exampleEmail" placeholder="Enter Image Name" />
-          <br />
-          <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="exampleEmail" placeholder="Enter Image Description" />
-          <div className="text-center mt-4">
-          <Button color="primary">Submit</Button>{' '}
-          </div>
-        </form>
-          </MDBCol>
+    
+    {/* <MDBContainer>
+      <br></br>
+            <MDBRow>
+                {
+                    this.props.images.map(image => {
+                        return (
+                            <MDBCol lg="4"  >
+                            <MDBView waves>
+                              <img src={image.download_url} className="img-fluid" alt="" />
+                            </MDBView>
+                            <br></br>
+                          </MDBCol>
+                        )
+                    })
+                }
             </MDBRow>
-          </MDBModalBody>
-          
-        </MDBModal>
-      </MDBContainer>
+          </MDBContainer> */}
 
 
 
-      </div>
-    )
-  }
+        <MDBContainer>
+        <Masonry
+            breakpointCols={3}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {
+                    this.props.images.map(image => {
+                        return (
 
+                          <div>
+                             <img src={image.download_url} className="img-fluid" alt="" />
+                          </div>
+                        )
+                    })
+                }
+          </Masonry>
+        </MDBContainer>
+    
+            </div>
+        )
+    }
 }
 
-export default ModalDesign
+const mapStateToProps = (state) => {
+  return {
+    images : state.images
+  }
+}
+
+export default connect(mapStateToProps)(ModalDesign)
