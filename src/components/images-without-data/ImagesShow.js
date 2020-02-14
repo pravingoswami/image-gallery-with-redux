@@ -27,7 +27,7 @@ class ImagesShow extends React.Component{
                         columnClassName="my-masonry-grid_column"
                     >
                             {
-                                    this.props.images.map(image => {
+                                   this.props.images && this.props.images.map(image => {
                                         return (
 
                                         <div>
