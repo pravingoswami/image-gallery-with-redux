@@ -6,12 +6,19 @@ import React from 'react'
 
   import '../images-without-data/modal.css';
 
+  const breakpointColumnsObj = {
+    default: 3,
+    900: 2,
+    500: 1
+  };
+
+
 function ImagesShow(props){
     return(
         <div>
             <MDBContainer>
                 <Masonry
-                    breakpointCols={3}
+                    breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid"
                     columnClassName="my-masonry-grid_column"
                 >
@@ -20,7 +27,8 @@ function ImagesShow(props){
                         return (
 
                           <div>
-                             <MDBCard style={{ width: "22rem" }} >
+                            <MDBCol>
+                            <MDBCard style={{ width: "22rem" }} >
                                         <MDBCardImage className="img-fluid" src={image.download_url} waves />
                                         <MDBCardBody>
                                         <MDBCardTitle>{image.name ? image.name : 'title'}</MDBCardTitle>
@@ -29,6 +37,7 @@ function ImagesShow(props){
                                         </MDBCardText>
                                         </MDBCardBody>
                                         </MDBCard>
+                            </MDBCol>
                           </div>
                         )
                     })

@@ -16,13 +16,34 @@ import './modal.css';
   import {Link} from 'react-router-dom'
 
 
+
+
+  const breakpointColumnsObj = {
+    default: 3,
+    900: 2,
+    500: 1
+  };
+
 class ImagesShow extends React.Component{
+
+    constructor(){
+        super()
+        this.state = {
+        //     breakpointColumnsObj : {
+        //         default: 4
+        //         // 1100: 3,
+        //         // 960 : 3,
+        //         // 400 :2
+        //     }
+        }
+    }
+
     render(){
         return(
             <div>
                 <MDBContainer>
                     <Masonry
-                        breakpointCols={3}
+                        breakpointCols={breakpointColumnsObj}
                         className="my-masonry-grid"
                         columnClassName="my-masonry-grid_column"
                     >
@@ -31,9 +52,11 @@ class ImagesShow extends React.Component{
                                         return (
 
                                         <div>
+                                            <MDBCol>
                                             <Link to = {`/images-without-data/${image.id}`} >
                                             <img src={image.download_url} className="img-fluid" alt="" />
                                             </Link>
+                                            </MDBCol>
                                             
                                         </div>
                                         )
