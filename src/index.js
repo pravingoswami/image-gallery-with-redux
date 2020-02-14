@@ -14,7 +14,7 @@ store.subscribe( () => {
 if(JSON.parse(localStorage.getItem('images'))){
     store.dispatch(setImages(JSON.parse(localStorage.getItem('images'))))
 } else {
-    store.dispatch(startSetImages()())
+    store.dispatch(startSetImages())
 }
 console.log(store.getState())
 
