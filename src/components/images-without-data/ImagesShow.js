@@ -17,39 +17,31 @@ import './modal.css';
 
 
 class ImagesShow extends React.Component{
-
-
-    
     render(){
         return(
             <div>
+                <MDBContainer>
+                    <Masonry
+                        breakpointCols={3}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                    >
+                            {
+                                    this.props.images.map(image => {
+                                        return (
 
-    
-
-
-
-          <MDBContainer>
-        <Masonry
-            breakpointCols={3}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {
-                    this.props.images.map(image => {
-                        return (
-
-                          <div>
-                              <Link to = {`/images-without-data/${image.id}`} >
-                              <img src={image.download_url} className="img-fluid" alt="" />
-                              </Link>
-                             
-                          </div>
-                        )
-                    })
-                }
-          </Masonry>
-        </MDBContainer>
-    
+                                        <div>
+                                            <Link to = {`/images-without-data/${image.id}`} >
+                                            <img src={image.download_url} className="img-fluid" alt="" />
+                                            </Link>
+                                            
+                                        </div>
+                                        )
+                                    })
+                                }
+                    </Masonry>
+                </MDBContainer>
+        
             </div>
         )
     }

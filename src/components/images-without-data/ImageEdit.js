@@ -18,15 +18,11 @@ class ImageEdit extends React.Component{
             description : props.description ? props.description :''
         }
     }
-
-
-
     handleForm = (e) => {
         this.setState({
             [e.target.name] : e.target.value
         })
     }
-
     handleSubmit = (e) => {
         e.preventDefault()
         const formData = {
@@ -38,7 +34,6 @@ class ImageEdit extends React.Component{
         console.log(this.props.match.params.image, formData, redirect())
 
     }
-
     render(){
         return(
             <div>

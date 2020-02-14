@@ -40,9 +40,6 @@ function NavbarDesign(props){
             <NavItem>
               <NavLink> <Link style = {linkStyle} to = "/images-with-data"  >Images With Data</Link> </NavLink>
             </NavItem>          
-              {/* <NavItem>
-              <NavLink> <Link style = {linkStyle} to = "/modal"  >modal</Link> </NavLink>
-            </NavItem> */}
           </Nav>
         </Collapse>
       </Navbar>
