@@ -31,7 +31,7 @@ export const startEditImage = (id, formData, redirect) => {
     return(dispatch) => {
         let images = JSON.parse(localStorage.getItem('images'))
         images = images.map(img => {
-            if(img.id === id){
+            if(img.id == id){
                 return {...img, ...formData}
             } else {
                 return {...img}
@@ -39,8 +39,6 @@ export const startEditImage = (id, formData, redirect) => {
         })
         localStorage.setItem("images", JSON.stringify(images))
         dispatch(setImages(JSON.parse(localStorage.getItem('images'))))
-
-
         redirect()
     }
 }
