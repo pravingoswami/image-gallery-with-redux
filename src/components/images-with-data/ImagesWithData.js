@@ -6,7 +6,7 @@ function ImagesWithData(props) {
     return (
         <div>
              <br></br>
-             <h1 className="display-4" style = {{textAlign : "center"}} >Images Without Data</h1>
+             <h1 className="display-4" style = {{textAlign : "center"}} >Images With Data</h1>
              <br></br>
              <ImagesShow images = {props.images && props.images} />
 
