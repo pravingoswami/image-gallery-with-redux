@@ -12,8 +12,11 @@ export const startSetImages = () => {
     return (dispatch) => {
         axios.get('https://picsum.photos/v2/list?page=2&limit=30')
             .then(response => {
-                console.log(response.data)
-                dispatch(setImages(response.data))
+                // console.log(response.data)
+                localStorage.setItem("images", JSON.stringify(response.data))
+                console.log(JSON.parse(localStorage.getItem('images')))
+                dispatch(setImages(JSON.parse(localStorage.getItem('images'))))
+                // dispatch(setImages(response.data))
             })
             .catch(err => console.log(err))
     }
@@ -28,7 +31,21 @@ const editImage = (id, formData) => {
 
 export const startEditImage = (id, formData, redirect) => {
     return(dispatch) => {
-        dispatch(editImage(id, formData))
+        let images = JSON.parse(localStorage.getItem('images'))
+        images = images.map(img => {
+            if(img.id === id){
+                return {...img, ...formData}
+            } else {
+                return {...img}
+            }
+        })
+        localStorage.setItem("images", JSON.stringify(images))
+        // dispatch(editImage(id, formData))
+        console.log('updated',images)
+        // dispatch(editImage(id, formData))
+        dispatch(setImages(JSON.parse(localStorage.getItem('images'))))
+
+
         redirect()
     }
 }

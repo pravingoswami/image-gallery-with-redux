@@ -19,7 +19,7 @@ class App extends React.Component{
           <Route path = "/images-without-data" component = {ImagesWitouthData} exact = {true} />
           <Route path = "/images-without-data/:image" component = {ImageEdit} />
           <Route path = "/images-with-data" component = {ImagesWithData} />
-          <Route path = "/modal" component = {ModalDesign} />
+          {/* <Route path = "/modal" component = {ModalDesign} /> */}
         
         </BrowserRouter>
       </div>
