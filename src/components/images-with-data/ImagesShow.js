@@ -6,14 +6,15 @@ import React from 'react'
 
   import '../images-without-data/modal.css';
 
-  const breakpointColumnsObj = {
-    default: 3,
-    900: 2,
-    500: 1
-  };
 
 
 function ImagesShow(props){
+    const breakpointColumnsObj = {
+        default: 3,
+        1200: 2,
+        800: 1
+      };
+    
     return(
         <div>
             <MDBContainer>
